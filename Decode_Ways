@@ -1,0 +1,25 @@
+class Solution(object):
+    def numDecodings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if len(s)==0 or int(s)==0:
+            return 0
+        count=0
+        d={}
+        return self.numDecodings_aux(s,count,d)
+
+    def numDecodings_aux(self,s,count,d):
+        if len(s) in d:
+            return d[len(s)]
+        if s.startswith("0"):
+            return 0
+        if len(s)==0:
+            return 1
+        count = count + self.numDecodings_aux(s[1:],count,d)
+        if int(s[:2])<=26 and len(s)>=2:
+            count = count + self.numDecodings_aux(s[2:],count,d)
+        if len(s) not in d:
+            d[len(s)]=count
+        return count
