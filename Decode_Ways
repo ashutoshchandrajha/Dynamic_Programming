@@ -23,3 +23,6 @@ class Solution(object):
         if len(s) not in d:
             d[len(s)]=count
         return count
+
+s = Solution()
+print(s.numDecodings("12"))
