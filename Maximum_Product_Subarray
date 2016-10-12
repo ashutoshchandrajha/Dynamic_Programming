@@ -1,0 +1,25 @@
+#although this is not a DP solution, this is in DP tag on leetcode
+
+class Solution(object):
+    def maxProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        prod=1
+        l=float("-inf")
+        for i in range(len(nums)):
+            prod=prod*nums[i]
+            if nums[i]==0:
+                prod=1
+                continue
+            l=max(l,prod)
+
+        prod=1
+        for i in range(len(nums)-1,-1,-1):
+            prod=prod*nums[i]
+            if nums[i]==0:
+                prod=1
+                continue
+            l=max(l,prod)
+        return l
